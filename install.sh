@@ -41,6 +41,12 @@ case ${DEPLOYMENT_TYPE:-docker} in
     k8s)
         install_deps kind kubectl jq helm
 
+        # check if kind binary is executable
+        kind_bin=$(whereis kind | awk '{print $2}')
+        if [[ ! -x "$kind_bin" ]]; then 
+            chmod +x $kind_bin
+        fi
+
         # Download CNI plugins
         if [ ! -d /opt/containernetworking/plugins ]; then
             pushd "$(mktemp -d)"

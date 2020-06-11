@@ -15,9 +15,9 @@ $no_proxy = ENV['NO_PROXY'] || ENV['no_proxy'] || "127.0.0.1,localhost"
 end
 $no_proxy += ",10.0.2.15,10.10.17.4"
 $socks_proxy = ENV['socks_proxy'] || ENV['SOCKS_PROXY'] || ""
-$deployment_type = ENV['DEPLOY'] || "docker"
+$deployment_type = ENV['DEPLOY'] || "k8s"
 $cni_type = ENV['CNI'] || "multus"
-$enable_skydive = ENV['ENABLE_SKYDIVE'] || "false"
+$enable_skydive = ENV['ENABLE_SKYDIVE'] || "true"
 
 Vagrant.configure(2) do |config|
   config.vm.provider :libvirt
